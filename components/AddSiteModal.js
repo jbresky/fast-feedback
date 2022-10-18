@@ -42,21 +42,13 @@ function AddSiteModal() {
             <FormControl>
               <FormLabel>Name</FormLabel>
               <Input
-                placeholder='My site'
-                name='site'
-                ref={register({
-                  required: 'Required'
-                })}
+                placeholder='My site' {...register('site', { required: true })}
               />
             </FormControl>
 
             <FormControl mt={4}>
               <FormLabel>Link</FormLabel>
-              <Input placeholder='https://website.com'
-                name='url'
-                ref={register({
-                  required: 'Required'
-                })}
+              <Input placeholder='https://website.com' {...register('url', { required: true })}
               />
             </FormControl>
           </ModalBody>
