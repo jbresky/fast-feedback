@@ -14,13 +14,14 @@ import {
   FormLabel,
   useDisclosure
 } from '@chakra-ui/react'
+import { createSite } from '@/lib/db';
 
 function AddSiteModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef();
 
   const { handleSubmit, register } = useForm();
-  // const onSubmit = values => console.log(values);
+  const onCreateSite = values => createSite(values);
 
   return (
     <>
@@ -34,19 +35,18 @@ function AddSiteModal() {
         onClose={onClose}
       >
         <ModalOverlay />
-        <ModalContent as='form' onSubmit={handleSubmit(createSite)}>
+        <ModalContent as='form' onSubmit={handleSubmit(onCreateSite)}>
           <ModalHeader fontWeight='bold'>Add Site</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>Name</FormLabel>
               <Input
-                ref={initialRef}
                 placeholder='My site'
                 name='site'
-                // ref={register({
-                //   required: 'Required'
-                // })}
+                ref={register({
+                  required: 'Required'
+                })}
               />
             </FormControl>
 
@@ -54,9 +54,9 @@ function AddSiteModal() {
               <FormLabel>Link</FormLabel>
               <Input placeholder='https://website.com'
                 name='url'
-                // ref={register({
-                //   required: 'Required'
-                // })}
+                ref={register({
+                  required: 'Required'
+                })}
               />
             </FormControl>
           </ModalBody>
