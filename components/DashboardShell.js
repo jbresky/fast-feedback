@@ -12,8 +12,12 @@ import {
   Text,
   Button
 } from '@chakra-ui/react'
+import { useAuth } from '@/lib/auth'
 
-const DashboardShell = () => (
+const DashboardShell = ({ children }) => {
+
+  const auth = useAuth();
+  return (
     <Flex flexDirection="column">
       <Flex
         flexDirection="row"
@@ -21,6 +25,7 @@ const DashboardShell = () => (
         justifyContent="space-between"
         alignItems="center"
         p={4}
+        height='100%'
       >
         <Stack
           spacing={4}
@@ -32,16 +37,19 @@ const DashboardShell = () => (
           <Link ml={4}>Sites</Link>
           <Link>Feedback</Link>
         </Stack>
-        <Box display="flex" justifyContent="center" alignItems="center">
+        {/* <Box display="flex" justifyContent="center" alignItems="center"> */}
+        <Flex alignItems='center'>
           <Link mr={4}>Account</Link>
-          <Avatar size="sm" />
-        </Box>
+          <Avatar size="sm" src={auth.user.photoUrl} />
+        </Flex>
+        {/* </Box> */}
       </Flex>
       <Flex backgroundColor="gray.100" p={8} height="100%">
         <Flex
           flexDirection="column"
           justifyContent="center"
-          maxWidth="800px"
+          maxWidth="900px"
+          w='100%'
           ml="auto"
           mr="auto"
         >
@@ -53,18 +61,11 @@ const DashboardShell = () => (
           <Heading size="xl" as="h2">
             Sites
           </Heading>
-          <Box backgroundColor="white" width="100%" borderRadius={4} p={8}>
-            <Heading size="md" as="h2">
-              Get feedback on your site instantly
-            </Heading>
-            <Text>Start today, then grow with us!</Text>
-            <Button variant="solid" size="md">
-              Upgrade to Starter
-            </Button>
-          </Box>
+          {children}
         </Flex>
       </Flex>
     </Flex>
-)
+  )
+}
 
 export default DashboardShell

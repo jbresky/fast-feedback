@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { useAuth } from '@/lib/auth'
 import { Button, Heading, Text, Code, Flex } from '@chakra-ui/react'
-import EmptyState from '@/components/EmptyState';
 
 export default function Home() {
   const auth = useAuth();
@@ -21,8 +20,7 @@ export default function Home() {
       </Text>
 
       {auth.user ? (
-        <EmptyState />
-        // <Button p={10} bgColor='rgb(237, 242, 247);' onClick={e => auth.signOut()}>Sign Out</Button>
+        <Button mt={4} onClick={e => auth.signOut()}>Sign Out</Button>
       ) : (
         <Button mt={4} onClick={e => auth.signinWithGithub()}>Sign In</Button>
       )}
