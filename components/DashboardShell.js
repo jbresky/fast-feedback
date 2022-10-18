@@ -4,6 +4,7 @@ import {
   Link,
   Box,
   Stack,
+  Icon,
   Avatar,
   Breadcrumb,
   BreadcrumbItem,
@@ -18,53 +19,51 @@ const DashboardShell = ({ children }) => {
 
   const auth = useAuth();
   return (
-    <Flex flexDirection="column">
+    <Box backgroundColor="gray.100" h="100vh">
       <Flex
-        flexDirection="row"
-        backgroundColor="whiteAlpha.900"
-        justifyContent="space-between"
-        alignItems="center"
-        p={4}
-        height='100%'
+        backgroundColor="white"
+        mb={[8, 16]}
+        w="full"
+        borderTop="5px solid #0AF5F4"
       >
-        <Stack
-          spacing={4}
-          isInline
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="row-reverse"
-        >
-          <Link ml={4}>Sites</Link>
-          <Link>Feedback</Link>
-        </Stack>
-        {/* <Box display="flex" justifyContent="center" alignItems="center"> */}
-        <Flex alignItems='center'>
-          <Link mr={4}>Account</Link>
-          <Avatar size="sm" src={auth.user.photoUrl} />
-        </Flex>
-        {/* </Box> */}
-      </Flex>
-      <Flex backgroundColor="gray.100" p={8} height="100%">
         <Flex
-          flexDirection="column"
-          justifyContent="center"
-          maxWidth="900px"
-          w='100%'
-          ml="auto"
-          mr="auto"
+          alignItems="center"
+          justifyContent="space-between"
+          pt={4}
+          pb={4}
+          maxW="1250px"
+          margin="0 auto"
+          w="full"
+          px={8}
+          h="60px"
         >
-          <Breadcrumb>
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink>Sites /</BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-          <Heading size="xl" as="h2">
-            Sites
-          </Heading>
-          {children}
+          <Flex align="center">
+            {/* <NextLink href="/" passHref> */}
+              <Link>
+                <Icon name="logo" size="24px" mr={8} />
+              </Link>
+            {/* </NextLink> */}
+            {/* <NextLink href="/sites" passHref> */}
+              <Link mr={4}>Sites</Link>
+            {/* </NextLink> */}
+            {/* <NextLink href="/feedback" passHref> */}
+              <Link>Feedback</Link>
+            {/* </NextLink> */}
+          </Flex>
+          <Flex justifyContent="center" alignItems="center">
+            {/* <NextLink href="/account" passHref> */}
+              <Link>
+                {/* <Avatar size="sm" src={user.photoUrl} /> */}
+              </Link>
+            {/* </NextLink> */}
+          </Flex>
         </Flex>
       </Flex>
-    </Flex>
+      <Flex margin="0 auto" direction="column" maxW="1250px" px={[0, 8, 8]}>
+        {children}
+      </Flex>
+      {/* <Footer /> */}
+    </Box>
   )
 }
 
