@@ -3,19 +3,14 @@ import {
   Flex,
   Link,
   Box,
-  Stack,
   Icon,
   Avatar,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  Heading,
-  Text,
   Button
 } from '@chakra-ui/react'
 import { useAuth } from '@/lib/auth'
 
 const DashboardShell = ({ children }) => {
+  const { user } = useAuth()
 
   const auth = useAuth();
   return (
@@ -39,22 +34,30 @@ const DashboardShell = ({ children }) => {
         >
           <Flex align="center">
             {/* <NextLink href="/" passHref> */}
-              <Link>
-                <Icon name="logo" size="24px" mr={8} />
-              </Link>
+            <Link>
+              <Icon name="logo" size="24px" mr={8} />
+            </Link>
             {/* </NextLink> */}
             {/* <NextLink href="/sites" passHref> */}
-              <Link mr={4}>Sites</Link>
+            <Link mr={4}>Sites</Link>
             {/* </NextLink> */}
             {/* <NextLink href="/feedback" passHref> */}
-              <Link>Feedback</Link>
+            <Link>Feedback</Link>
             {/* </NextLink> */}
           </Flex>
           <Flex justifyContent="center" alignItems="center">
             {/* <NextLink href="/account" passHref> */}
+            {user && (
               <Link>
-                {/* <Avatar size="sm" src={user.photoUrl} /> */}
+                <Button variant='ghost' mr={2} onClick={() => signOut()}>
+                  Log Out
+                </Button>
               </Link>
+            )}
+            <Link>
+              <Avatar size="sm" src={user?.photoUrl} />
+            </Link>
+
             {/* </NextLink> */}
           </Flex>
         </Flex>

@@ -6,14 +6,11 @@ import {
     Text,
     Button
 } from '@chakra-ui/react'
-import DashboardShell from './DashboardShell'
 import AddSiteModal from './AddSiteModal'
 
 const apos = `'`
 
 const EmptyState = () => (
-    <DashboardShell>
-        {/* <Box backgroundColor="white" width="100%" borderRadius={4} p={8} mt={3}> */}
         <Flex
             width='100%'
             backgroundColor="white"
@@ -28,8 +25,6 @@ const EmptyState = () => (
             <Text mb={4}>Let{apos}s get started</Text>
             <AddSiteModal />
         </Flex>
-        {/* </Box> */}
-    </DashboardShell>
 )
 
 export default EmptyState

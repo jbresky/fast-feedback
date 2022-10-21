@@ -12,16 +12,35 @@ import {
   Button,
   FormControl,
   FormLabel,
+  useToast,
   useDisclosure
 } from '@chakra-ui/react'
 import { createSite } from '@/lib/db';
+import { useAuth } from '@/lib/auth';
 
 function AddSiteModal() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef();
+  const toast = useToast();
+  const auth = useAuth();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { handleSubmit, register } = useForm();
-  const onCreateSite = values => createSite(values);
+  const onCreateSite = ({ site, url }) => {
+    createSite({
+      authorId: auth.user.uid,
+      createdAt: new Date().toISOString(),
+      site,
+      url
+    });
+    toast({
+      title: 'Succes!',
+      description: "We have created your site",
+      status: 'success',
+      duration: 4000,
+      isClosable: true
+    })
+    onClose()
+  }
 
   return (
     <>
