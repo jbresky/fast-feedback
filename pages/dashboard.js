@@ -21,6 +21,7 @@ const Dashboard = () => {
 
   return (
   <DashboardShell>
+    <h1>My sites</h1>
    {data.sites ? <SiteTable sites={data.sites} /> : <EmptyState />}
   </DashboardShell>
   )
