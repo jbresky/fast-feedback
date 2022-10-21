@@ -36,7 +36,7 @@ function AddSiteModal() {
       title: 'Succes!',
       description: "We have created your site",
       status: 'success',
-      duration: 4000,
+      duration: 3000,
       isClosable: true
     })
     onClose()
