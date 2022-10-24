@@ -1,5 +1,4 @@
 import EmptyState from '@/components/EmptyState';
-
 import useSWR from 'swr';
 import SiteTableSkeleton from '@/components/SiteTableSkeleton';
 import DashboardShell from '@/components/DashboardShell';

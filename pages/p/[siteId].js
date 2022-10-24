@@ -41,12 +41,11 @@ const SiteFeedback = ({ initialFeedback }) => {
         e.preventDefault();
 
         const newFeedback = {
-            author: auth.user.name,
+            author: auth.user.email,
             authorId: auth.user.uid,
             siteId: router.query.siteId,
             text: inputEl.current.value,
             createdAt: new Date().toISOString(),
-            provider: auth.user.provider,
             status: 'pending'
         };
 
