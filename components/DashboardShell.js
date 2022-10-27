@@ -49,7 +49,7 @@ const DashboardShell = ({ children }) => {
             {/* <NextLink href="/account" passHref> */}
             {user && (
               <Link>
-                <Button variant='ghost' mr={2} onClick={() => signOut()}>
+                <Button variant='ghost' mr={2} onClick={() => auth.signOut()}>
                   Log Out
                 </Button>
               </Link>
