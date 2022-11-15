@@ -1,5 +1,5 @@
 import Feedback from "@/components/Feedback";
-import { getAllFeedback, getAllSites } from "@/lib/db-admin";
+import { getAllFeedback, getUserSites } from "@/lib/db-admin";
 import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -19,7 +19,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-    const {sites} = await getAllSites();
+    const {sites} = await getUserSites();
     const paths = sites.map(site => ({
         params: {
             siteId: site.id.toString()
